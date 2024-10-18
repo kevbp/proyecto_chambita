@@ -72,6 +72,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         DAO_Acceso usuarioData = new DAO_Acceso();
         String user = request.getParameter("txtEmail");
         String Pass = request.getParameter("txtClave");
@@ -81,9 +82,9 @@ public class Login extends HttpServlet {
           
           if(access==true){
             response.sendRedirect(request.getContextPath() + "/Acceso/Registrar.jsp"); //Redirige al index por mientras
-          }else{
-            request.setAttribute("mensajeError", "Usuario o contraseña incorrectos");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+          }else{ 
+            request.setAttribute("mensajeError", "Los datos son incorrectos!");
+            request.getRequestDispatcher("").forward(request, response);
           }
         }catch(Exception ex) {
             ex.printStackTrace();

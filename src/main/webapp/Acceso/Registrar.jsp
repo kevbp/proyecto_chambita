@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Registrar</h1>
+        <h1>Conexión de registro logrado</h1>
         <form action="Registrar" method="post">
             <input type="submit" value="Regresar" name="btnRegresar" />
         </form>

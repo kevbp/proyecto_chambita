@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Encuentra al proveedor adecuado para tí</h1>
-        <form action="NuevaSolicitud" method="post">
+        <form action="../NuevaSolicitud" method="POST">
             <div>
                 <label for="txtTitulo">Título de la solicitud</label>
                 <input type="text" id="txtTitulo" placeholder="Breve y preciso">

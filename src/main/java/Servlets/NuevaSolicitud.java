@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Usuario local
  */
-@WebServlet(name = "NuevaSolicitud", urlPatterns = {"/Cliente/Solicitud"})
+@WebServlet(name = "NuevaSolicitud", urlPatterns = {"/NuevaSolicitud"})
 public class NuevaSolicitud extends HttpServlet {
 
     /**
@@ -71,7 +71,6 @@ public class NuevaSolicitud extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
     }
 

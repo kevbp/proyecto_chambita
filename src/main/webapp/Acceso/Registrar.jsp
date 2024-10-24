@@ -12,9 +12,24 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Conexión de registro logrado</h1>
-        <form action="Registrar" method="post">
-            <input type="submit" value="Regresar" name="btnRegresar" />
+        <h1>Registrar</h1>
+        <form action="Registrar" method="post">            
+            <div class="mb-3">
+                <input type="text" class="form-control" name="txtNombre" id="txtNombre" placeholder="Nombres" required>
+            </div>          
+            <div class="mb-3">
+                <input type="text" class="form-control" name="txtApellido" id="txtApellido" placeholder="Apellidos" required>
+            </div>          
+            <div class="mb-3">
+                <input type="email" class="form-control" name="txtCorreo" id="txtCorreo" placeholder="Correo" required>
+            </div>          
+            <div class="mb-3">
+                <input type="password" class="form-control" name="txtContrasena" id="txtContrasena" placeholder="Contraseña" required>
+            </div>          
+            <div class="mb-3">
+                <input type="password" class="form-control" name="txtContrasena2" id="txtContrasena2" placeholder="Confirmar contraseña" required>
+            </div>
+            <input type="submit" value="Crear cuenta" name="btnRegistrar" />
         </form>
     </body>
 </html>

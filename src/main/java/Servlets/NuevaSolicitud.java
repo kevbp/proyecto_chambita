@@ -4,7 +4,6 @@
  */
 package Servlets;
 
-import Datos.DAO_Acceso;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Eduardo
+ * @author Usuario local
  */
-@WebServlet(name = "Registrar", urlPatterns = {"/Acceso/Registrar"})
-public class Registrar extends HttpServlet {
+@WebServlet(name = "NuevaSolicitud", urlPatterns = {"/Cliente/Solicitud"})
+public class NuevaSolicitud extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,12 +36,12 @@ public class Registrar extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Registrar</title>");            
+            out.println("<title>Servlet NuevaSolicitud</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Registrar at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet NuevaSolicitud at " + request.getContextPath() + "</h1>");
             out.println("</body>");
-            out.println("</html>");                   
+            out.println("</html>");
         }
     }
 
@@ -72,24 +71,8 @@ public class Registrar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DAO_Acceso usuarioData = new DAO_Acceso();
-        String nomb = request.getParameter("txtNombre");
-        String ape = request.getParameter("txtApellido");
-        String correo = request.getParameter("txtCorreo");
-        String clave = request.getParameter("txtContrasena");
-        
-        try{
-          boolean access=usuarioData.registrarUsuario(request, nomb, ape, correo, clave);
-          
-          if(access==true){
-            response.sendRedirect(request.getContextPath()); //Redirige al index por mientras
-          }else{ 
-            request.setAttribute("mensajeError", "Los datos son incorrectos!");
-            request.getRequestDispatcher("").forward(request, response);
-          }
-        }catch(Exception ex) {
-            ex.printStackTrace();
-        }
+        processRequest(request, response);
+        response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
     }
 
     /**

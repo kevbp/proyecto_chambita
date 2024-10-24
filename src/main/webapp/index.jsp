@@ -51,7 +51,7 @@
     <body>
         <nav>
             <span class="navbar-text">¿Buscas trabajar?</span>
-            <a href="#" class="btn btn-primary register-btn">Registrarse</a>
+            <a href="Acceso/Registrar.jsp" class="btn btn-primary register-btn">Registrarse</a>
         </nav>
         <h1 class="text-center">Chambita<span class="text-primary">.pe</span></h1>
         <div class="container d-flex justify-content-center">
@@ -72,7 +72,7 @@
                     </div>
                     <hr>
                     <div class="text-center">
-                        <span>¿No tienes cuenta? <a href="#" class="register-link">Regístrate</a></span>
+                        <span>¿No tienes cuenta? <a href="Acceso/Registrar.jsp" class="register-link">Regístrate</a></span>
                     </div>
                     <div class="text-center">
                         <span><%

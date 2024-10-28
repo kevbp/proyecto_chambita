@@ -5,6 +5,7 @@
 package Servlets;
 
 import Datos.DAO_Acceso;
+import Utilitarios.Encriptacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -74,20 +75,21 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         
         DAO_Acceso usuarioData = new DAO_Acceso();
+        
         String user = request.getParameter("txtEmail");
         String Pass = request.getParameter("txtClave");
         
-        try{
-          boolean access=usuarioData.autenticarUsuario(request, user, Pass);
-          
-          if(access==true){
-            response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); //Redirige al index por mientras
-          }else{ 
-            request.setAttribute("mensajeError", "Los datos son incorrectos!");
-            request.getRequestDispatcher("").forward(request, response);
-          }
+        try{            
+            boolean access=usuarioData.autenticarUsuario(request, user, Pass);
+
+            if(access==true){
+              response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); //Redirige al index por mientras
+            }else{ 
+              request.setAttribute("mensajeError", "Los datos son incorrectos!");
+              request.getRequestDispatcher("").forward(request, response);
+            }
         }catch(Exception ex) {
-            ex.printStackTrace();
+            ex.getMessage();
         }
     }
 

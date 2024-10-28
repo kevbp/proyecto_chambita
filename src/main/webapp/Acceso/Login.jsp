@@ -36,7 +36,7 @@
         <div class="form-login w-100 m-auto">
             <div class="form-container">
                 <h2 class="text-center mb-4">Inicia sesión</h2>
-                <form action="Login" method="post">
+                <form action="../Login" method="POST">
 
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" name="txtEmail" id="txtEmail" placeholder="tucorreo@ejemplo.com" required>
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" name="txtClave" id="txtClave" placeholder="Contraseña" required>
+                        <input type="password" class="form-control" name="txtClave" id="txtClave" placeholder="Contraseña" maxlength="10" required>
                         <label for="txtClave">Contraseña</label>
                     </div>
 

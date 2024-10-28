@@ -4,6 +4,7 @@
  */
 package Servlets;
 
+import Datos.DAO_Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,17 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author Usuario local
  */
 @WebServlet(name = "NuevaSolicitud", urlPatterns = {"/NuevaSolicitud"})
-public class NuevaSolicitud extends HttpServlet {
+public class ClienteServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -45,40 +38,41 @@ public class NuevaSolicitud extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
+        
+        String titulo = request.getParameter("txtTitulo");
+        String descripcion = request.getParameter("txtDescripcion");
+        String region = request.getParameter("txtRegion");
+        String provincia = request.getParameter("txtProvincia");
+        String distrito = request.getParameter("txtDistrito");
+        String fecha = request.getParameter("txtFecha");
+        float precio = Float.parseFloat(request.getParameter("txtPrecio"));
+        
+        DAO_Cliente dAO_Cliente = new DAO_Cliente();
+        try{
+          boolean access = dAO_Cliente.registrarSolicitud(request, 2, titulo, descripcion, fecha, region, provincia, distrito, precio);
+          
+          if(access==true){
+            response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
+          }else{ 
+            request.setAttribute("mensajeError", "Los datos son incorrectos!");
+            request.getRequestDispatcher("").forward(request, response);
+          }
+        }catch(Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";

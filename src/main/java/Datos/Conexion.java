@@ -12,7 +12,7 @@ import java.sql.Connection;
  *
  * @author Eduardo
  */
-public class Conexion {
+abstract class Conexion {
     static String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
     static String url="jdbc:sqlserver://localhost:1433;databaseName=APPBD;encrypt=false;";
     static String user="sa";

@@ -4,9 +4,9 @@
  */
 package Datos;
 
+import Utilitarios.Encriptacion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,15 +16,16 @@ import javax.servlet.http.HttpSession;
  *
  * @author Eduardo
  */
-public class DAO_Acceso {
-    public boolean autenticarUsuario(HttpServletRequest request, String user, String pass) {
-        Conexion conexiondb = new Conexion();
-        Connection conn = conexiondb.Connected(); 
-        try{
-            PreparedStatement pstm=conn.prepareStatement("SELECT IdUsuario, Correo, Clave FROM Tb_Login WHERE Correo = ? and Clave = ?");
-            pstm.setString(1, user);
-            pstm.setString(2, pass);
-            ResultSet rs=pstm.executeQuery();
+public class DAO_Acceso extends Conexion{
+    public boolean autenticarUsuario(HttpServletRequest request, String correo, String pass) {
+        
+        Encriptacion e = new Encriptacion();
+        
+        Connection conn = Connected(); 
+        try{            
+            CallableStatement cs = conn.prepareCall("{CALL sp_Login(?)}");
+            cs.setString(1, correo);
+            ResultSet rs = cs.executeQuery();
             
             if(rs.next()){
                 
@@ -32,33 +33,37 @@ public class DAO_Acceso {
                 String nombre = rs.getString("Correo");
                 String clave = rs.getString("Clave");
                 
-                if(!id.equals("")){                    
-                    //Usuario nuser = new Usuario(user, nivelUsuario, nombreUsuario);              
-                    HttpSession session = request.getSession();
-                    session.invalidate();
-                    session = request.getSession(true);
-                    session.setAttribute("user", nombre);
-                    session.setMaxInactiveInterval(120);
-                    return true;
+                if (e.decript(clave).equals(pass)) {                
+                    if(!id.equals("")){                    
+                        //Usuario nuser = new Usuario(user, nivelUsuario, nombreUsuario);              
+                        HttpSession session = request.getSession();
+                        session.invalidate();
+                        session = request.getSession(true);
+                        session.setAttribute("user", nombre);
+                        session.setMaxInactiveInterval(120);
+                        return true;
+                    }
                 }
             }
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }finally{
-            conexiondb.Discconet();
+            Discconet();
         }
         return false;
     }
     
     public boolean registrarUsuario(HttpServletRequest request, String nombre, String apellido, String correo, String clave) {
-        Conexion conexiondb = new Conexion();
-        Connection conn = conexiondb.Connected(); 
+        Encriptacion e = new Encriptacion();  
+        
+        Connection conn = Connected(); 
         try{
+            String encriptado = e.encode(clave);
             CallableStatement cs = conn.prepareCall("{CALL sp_Registrar_Usuario(?,?,?,?)}");
             cs.setString(1, nombre);
             cs.setString(2, apellido);
             cs.setString(3, correo);
-            cs.setString(4, clave);
+            cs.setString(4, encriptado);
             cs.execute();
             return true;
             /*ResultSet rs = cs.executeQuery();
@@ -80,9 +85,9 @@ public class DAO_Acceso {
                 }
             }*/
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.getMessage();
         }finally{
-            conexiondb.Discconet();
+            Discconet();
         }
         return false;
     }

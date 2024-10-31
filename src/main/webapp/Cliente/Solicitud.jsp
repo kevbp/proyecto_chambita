@@ -107,49 +107,49 @@
                     <div>
                         <P class="fs-2 fw-bold">Contabilidad</P>   
                     </div>
-                    <form>
+                    <form method="POST" action="../Cliente">
                         <div class="d-flex flex-column mb-3">
                             <label class="mb-2" for="txtTitulo">Título de la solicitud</label>
                             <input type="text" class="form-control" placeholder="Intenta que sea breve y preciso" id="txtTitulo" name="txtTitulo">
                         </div>
                         <div class="d-flex flex-column mb-3">
                             <label class="mb-2" for="txtDescripción">Describe brevemente tus requerimientos</label>
-                            <textarea id="txtDescripción" class="form-control" placeholder="Ejemplo: Requiero un camión de mudanza para..." name="txtDescripción" rows="4" cols="50"></textarea>
+                            <textarea id="txtDescripcion" class="form-control" placeholder="Requiero un camión de mudanza para..." name="txtDescripcion" rows="4" cols="50"></textarea>
                         </div>
                         <div class="d-flex flex-column mb-3">
                             <label class="mb-2" for="txtTitulo">¿Dónde estás ubicado?</label>
                             <div class="container-fluid d-flex flex-row p-0 justify-content-between">
-                                <select class="form-select">
+                                <select class="form-select" name="txtRegion">
                                     <option disabled selected>Departamento</option>
-                                    <option value="Lima">Lima Provincias</option>
-                                    <option value="Lima">Lima Metropolitana</option>
+                                    <option value="LP">Lima Provincias</option>
+                                    <option value="LM">Lima Metropolitana</option>
                                     <option value="Cusco">Cusco</option>
                                     <option value="Ancash">Ancash</option>
                                 </select>
-                                <select class="form-select">
+                                <select class="form-select" name="txtProvincia">
                                     <option disabled selected>Provincia</option>
                                     <option value="Lima">Lima</option>
                                     <option value="Cusco">Cusco</option>
                                     <option value="Ancash">Ancash</option>
                                 </select>
-                                <select class="form-select">
+                                <select class="form-select" name="txtDistrito">
                                     <option disabled selected>Distrito</option>
-                                    <option value="Lima">Villa el Salvador</option>
-                                    <option value="Cusco">Chorillos</option>
-                                    <option value="Ancash">Surco</option>
+                                    <option value="VES">Villa el Salvador</option>
+                                    <option value="Chorrillos">Chorrillos</option>
+                                    <option value="Surco">Surco</option>
                                 </select>
                             </div>
                         </div>
                         <div class="d-flex flex-row mb-3 justify-content-between align-items-center">
                             <div class="d-flex flex-column">
                                 <label class="mb-2" for="fechaEjecucion">Fecha de ejecución</label>
-                                <input type="date" class="form-control" name="fechaEjecucion" id="fechaEjecucion">
+                                <input type="date" class="form-control" name="txtFecha" id="txtFecha">
                             </div>
                             <div class="d-flex flex-column">
                                 <label class="mb-2" for="precioCliente">¿Dónde estás ubicado?</label>
                                 <div class="input-group">
                                     <span class="input-group-text">S/.</span>
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" name="txtPrecio">
                                   </div>
                             </div>
                             <div>

@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Usuario local
  */
-@WebServlet(name = "NuevaSolicitud", urlPatterns = {"/NuevaSolicitud"})
-public class ClienteServlet extends HttpServlet {
+@WebServlet(name = "Cliente", urlPatterns = {"/Cliente"})
+public class Cliente extends HttpServlet {
 
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -56,10 +56,11 @@ public class ClienteServlet extends HttpServlet {
         String distrito = request.getParameter("txtDistrito");
         String fecha = request.getParameter("txtFecha");
         float precio = Float.parseFloat(request.getParameter("txtPrecio"));
+        int id = Integer.parseInt(request.getSession().getAttribute("id").toString()); 
         
         DAO_Cliente dAO_Cliente = new DAO_Cliente();
         try{
-          boolean access = dAO_Cliente.registrarSolicitud(request, 2, titulo, descripcion, fecha, region, provincia, distrito, precio);
+          boolean access = dAO_Cliente.registrarSolicitud(request, id, titulo, descripcion, fecha, region, provincia, distrito, precio);
           
           if(access==true){
             response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
@@ -68,7 +69,7 @@ public class ClienteServlet extends HttpServlet {
             request.getRequestDispatcher("").forward(request, response);
           }
         }catch(Exception ex) {
-            ex.printStackTrace();
+            ex.getMessage();
         }
     }
 

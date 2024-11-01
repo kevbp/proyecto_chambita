@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Datos;
 
 import Utilitarios.Encriptacion;
@@ -12,11 +9,9 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Eduardo
- */
+
 public class DAO_Acceso extends Conexion{
+    
     public boolean autenticarUsuario(HttpServletRequest request, String correo, String pass) {
         
         Encriptacion e = new Encriptacion();
@@ -39,6 +34,7 @@ public class DAO_Acceso extends Conexion{
                         HttpSession session = request.getSession();
                         session.invalidate();
                         session = request.getSession(true);
+                        
                         session.setAttribute("user", nombre);
                         session.setMaxInactiveInterval(120);
                         return true;
@@ -66,24 +62,7 @@ public class DAO_Acceso extends Conexion{
             cs.setString(4, encriptado);
             cs.execute();
             return true;
-            /*ResultSet rs = cs.executeQuery();
             
-            if(rs.next()){
-                
-                String id = rs.getString("IdUsuario");
-                String nombre = rs.getString("Correo");
-                String clave = rs.getString("Clave");
-                
-                if(!id.equals("")){                    
-                    //Usuario nuser = new Usuario(user, nivelUsuario, nombreUsuario);              
-                    HttpSession session = request.getSession();
-                    session.invalidate();
-                    session = request.getSession(true);
-                    session.setAttribute("user", nombre);
-                    session.setMaxInactiveInterval(120);
-                    return true;
-                }
-            }*/
         }catch(SQLException ex){
             ex.getMessage();
         }finally{

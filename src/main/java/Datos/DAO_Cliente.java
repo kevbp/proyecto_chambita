@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Datos;
 
 import java.sql.CallableStatement;
@@ -9,11 +6,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 
-/**
- *
- * @author Usuario local
- */
+
 public class DAO_Cliente extends Conexion{
+    
     public boolean registrarSolicitud(HttpServletRequest request, int id, String titulo, String desc, String fecha, String reg,
                  String prov, String dist, float precio) {
         

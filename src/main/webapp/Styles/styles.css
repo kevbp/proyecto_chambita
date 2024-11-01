@@ -1,28 +1,36 @@
 body {
-    background-color: #f9f9f9;
-
+    background-color: #ffffff;
 }
 .form-login {
     max-width: 400px;
     padding: 1rem;
 }
-.login-container {
+.form-signup {
+    max-width: 500px;
+    padding: 1rem;
+}
+.form-container {
     margin-top: 25px;
     margin-bottom: 25px;
     padding: 40px;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 5px;
     box-shadow: -1px 6px 10px rgba(0, 0, 0, 0.1);
 }
 .btn-primary {
-    background-color: #3b3bff;
+    background-color: #3A4BB7;
     border: none;
+    color: #fff;
 }
 .btn-primary:hover {
-    background-color: #3b3bff;
+    background-color: #3A4BB7;
+}
+.btn-outline-primary {
+    border-color: #3A4BB7;
+    color: #3A4BB7;
 }
 .color-links {
-    color: #3b3bff;
+    color: #3A4BB7;
 }
 
 .register-btn {
@@ -35,4 +43,59 @@ body {
 .space-divider {
     width: 100%;
     height: 3rem;
+}
+
+.color-logo {
+    color: black;
+}
+.header-nav{
+    background-color: #ffffff;
+    box-shadow: -1px 6px 10px rgba(0, 0, 0, 0.1);
+}
+.img-principal{
+    width: 70%;
+}
+.active{
+    background-color: #e7e7e7;
+}
+
+.switch{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.box{
+    margin: 10px;
+}
+.lbl-switch{
+    display: inline-block;
+    width: 55px;
+    height: 30px;
+    background: #aaa;
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+}
+#btn-switch:checked~ .lbl-switch{
+    background: #3A4BB7;
+}
+.lbl-switch:after{
+    position: absolute;
+    content: '';
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 100px;
+    top:4px;
+    left: 5px;
+    transition: 0.3s;
+}
+#btn-switch:checked~ .lbl-switch:after{
+    left: 28px;
+}
+#btn-switch{
+    display: none;
+}
+.offcanvas{
+    width: 300px !important;
 }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Utilitarios;
 
 import java.security.MessageDigest;
@@ -11,10 +8,7 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-/**
- *
- * @author Usuario local
- */
+
 public class Encriptacion {
     private static String  ENCRYPT_KEY = "clave-compartida-no-reveloar-nunca";
     

@@ -45,11 +45,11 @@
                         </div>
                 </ul>
                 <ul class="navbar-nav justify-content-end flex-grow-1">
-                    <li class="nav-item border-bottom border-dark-subtle">
-                    <a class="nav-link px-3" aria-current="page" href="#">Contratar</a>
-                    </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-3 fw-semibold" href="#">Mis solicitudes</a>
+                    <a class="nav-link px-3" href="#">Contratar</a>
+                    </li>
+                    <li class="nav-item border-bottom border-dark-subtle">
+                    <a class="nav-link active px-3 fw-semibold" aria-current="page" href="#">Mis solicitudes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link px-3 btn btn-primary" href="#">Mi perfil</a>

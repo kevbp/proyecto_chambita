@@ -99,3 +99,95 @@ body {
 .offcanvas{
     width: 300px !important;
 }
+
+.header-nav {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.color-logo {
+    color: #2d2d2d;
+}
+.color-links {
+    color: #4361ee;
+}
+/* Estilo para el switch toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin: 0 10px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.lbl-switch {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+.lbl-switch:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .lbl-switch {
+    background-color: #4361ee;
+}
+input:checked + .lbl-switch:before {
+    transform: translateX(30px);
+}
+.nav-link.btn-primary {
+    color: white !important;
+    padding: 8px 16px !important;
+    border-radius: 6px;
+}
+.nav-link.active {
+    font-weight: 600;
+    position: relative;
+}
+.nav-link.active:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #2d2d2d;
+}
+
+.location-badge {
+    background-color: #f8f9fa;
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 0.9em;
+    color: #666;
+}
+.chamba-card {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+.chamba-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.filter-section {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+}

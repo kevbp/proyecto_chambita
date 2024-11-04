@@ -7,14 +7,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/styles.css">
-    <title>Contratar especialista</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles/styles.css">
+        <title>Contratar especialista</title>
+    </head>
+    <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
+            if (session.getAttribute("id")==null){
+                response.sendRedirect(request.getContextPath()+"/Acceso/Login.jsp");
+            }
+    %>
+    <body>
     <nav class="navbar navbar-expand-lg navbar-white bg-white p-3 header-nav" aria-label="Offcanvas navbar large">
         <div class="container-fluid px-3">
             <a href="index.html" class="text-decoration-none color-logo  pe-5">
@@ -48,7 +53,7 @@
                     <a class="nav-link active px-3 fw-semibold" aria-current="page" href="#">Contratar</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link px-3" href="#">Mis solicitudes</a>
+                    <a class="nav-link px-3" href="../Cliente?Op=Listar">Mis solicitudes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link px-3 btn btn-primary" href="#">Mi perfil</a>

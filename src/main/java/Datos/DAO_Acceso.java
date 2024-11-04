@@ -52,7 +52,6 @@ public class DAO_Acceso extends Conexion{
         }
         return false;
     }
-    
     public boolean registrarUsuario(HttpServletRequest request, String nombre, String apellido, String correo, String clave) {
         Encriptacion e = new Encriptacion();  
         

@@ -5,14 +5,18 @@
 package Servlets;
 
 import Datos.DAO_Acceso;
+import Datos.DAO_Cliente;
+import Entidades.Solicitud;
 import Utilitarios.Encriptacion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -66,12 +70,18 @@ public class Login extends HttpServlet {
         
         try{            
             boolean access=usuarioData.autenticarUsuario(request, user, Pass);
+            int id = Integer.parseInt(request.getSession().getAttribute("id").toString()); 
 
             if(access==true){
-              response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); //Redirige al index por mientras
+                HttpSession session = request.getSession(false);
+                DAO_Cliente dAO_Cliente = new DAO_Cliente();
+                ArrayList<Solicitud> lista= new ArrayList<Solicitud>();
+                lista = dAO_Cliente.listarMisSolicitudes(request, id);
+                session.setAttribute("Lista", lista);
+                response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); //Redirige al index por mientras
             }else{ 
-              request.setAttribute("mensajeError", "Los datos son incorrectos!");
-              request.getRequestDispatcher("").forward(request, response);
+                request.setAttribute("mensajeError", "Los datos son incorrectos!");
+                request.getRequestDispatcher("").forward(request, response);
             }
         }catch(Exception ex) {
             ex.getMessage();

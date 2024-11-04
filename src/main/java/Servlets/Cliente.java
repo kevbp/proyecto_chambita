@@ -5,8 +5,10 @@
 package Servlets;
 
 import Datos.DAO_Cliente;
+import Entidades.Solicitud;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,25 +26,27 @@ public class Cliente extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NuevaSolicitud</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NuevaSolicitud at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        DAO_Cliente dAO_Cliente = new DAO_Cliente();
+        String Op =request.getParameter("Op");
+        int id = Integer.parseInt(request.getSession().getAttribute("id").toString()); 
+        try {
+            switch (Op) {
+                case "Listar":
+                    ArrayList<Solicitud> lista= new ArrayList<Solicitud>();
+                    lista = dAO_Cliente.listarMisSolicitudes(request, id);
+                    request.setAttribute("Lista", lista);
+                    request.getRequestDispatcher("/Cliente/MisSolicitudes.jsp").forward(request, response);
+                    //response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -63,6 +67,9 @@ public class Cliente extends HttpServlet {
           boolean access = dAO_Cliente.registrarSolicitud(request, id, titulo, descripcion, fecha, region, provincia, distrito, precio);
           
           if(access==true){
+            ArrayList<Solicitud> lista= new ArrayList<Solicitud>();
+            lista = dAO_Cliente.listarMisSolicitudes(request, id);
+            request.setAttribute("Lista", lista);
             response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
           }else{ 
             request.setAttribute("mensajeError", "Los datos son incorrectos!");

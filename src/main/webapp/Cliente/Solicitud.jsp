@@ -15,9 +15,9 @@
         <title>Contratar especialista</title>
     </head>
     <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
-            if (session.getAttribute("id")==null){
-                response.sendRedirect(request.getContextPath()+"/Acceso/Login.jsp");
-            }
+        if (session.getAttribute("id")==null){
+            response.sendRedirect(request.getContextPath()+"/Acceso/Login.jsp");
+        }
     %>
     <body>
     <nav class="navbar navbar-expand-lg navbar-white bg-white p-3 header-nav" aria-label="Offcanvas navbar large">
@@ -53,7 +53,7 @@
                     <a class="nav-link active px-3 fw-semibold" aria-current="page" href="#">Contratar</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link px-3" href="../Cliente?Op=Listar">Mis solicitudes</a>
+                        <a class="nav-link px-3" href="MisSolicitudes.jsp">Mis solicitudes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link px-3 btn btn-primary" href="#">Mi perfil</a>
@@ -126,22 +126,57 @@
                             <div class="container-fluid d-flex flex-row p-0 justify-content-between">
                                 <select class="form-select" name="txtRegion">
                                     <option disabled selected>Departamento</option>
-                                    <option value="LP">Lima Provincias</option>
-                                    <option value="LM">Lima Metropolitana</option>
-                                    <option value="Cusco">Cusco</option>
-                                    <option value="Ancash">Ancash</option>
+                                    <option value="Lima">Lima</option>
                                 </select>
                                 <select class="form-select" name="txtProvincia">
                                     <option disabled selected>Provincia</option>
                                     <option value="Lima">Lima</option>
-                                    <option value="Cusco">Cusco</option>
-                                    <option value="Ancash">Ancash</option>
                                 </select>
                                 <select class="form-select" name="txtDistrito">
                                     <option disabled selected>Distrito</option>
-                                    <option value="VES">Villa el Salvador</option>
-                                    <option value="Chorrillos">Chorrillos</option>
-                                    <option value="Surco">Surco</option>
+                                    <option value="ANCON">ANCON</option>
+                                    <option value="ATE">ATE</option>
+                                    <option value="BARRANCO">BARRANCO</option>
+                                    <option value="BREÑA">BREÑA</option>
+                                    <option value="CARABAYLLO">CARABAYLLO</option>
+                                    <option value="CHACLACAYO">CHACLACAYO</option>
+                                    <option value="CHORRILLOS">CHORRILLOS</option>
+                                    <option value="CIENEGUILLA">CIENEGUILLA</option>
+                                    <option value="COMAS">COMAS</option>
+                                    <option value="EL AGUSTINO">EL AGUSTINO</option>
+                                    <option value="INDEPENDENCIA">INDEPENDENCIA</option>
+                                    <option value="JESUS MARIA">JESUS MARIA</option>
+                                    <option value="LA MOLINA">LA MOLINA</option>
+                                    <option value="LA VICTORIA">LA VICTORIA"</option>
+                                    <option value="LIMA">LIMA</option>
+                                    <option value="LINCE">LINCE</option>
+                                    <option value="LOS OLIVOS">LOS OLIVOS</option>
+                                    <option value="LURIGANCHO">LURIGANCHO</option>
+                                    <option value="LURIN">LURIN</option>
+                                    <option value="MAGDALENA DEL MAR">MAGDALENA DEL MAR</option>
+                                    <option value="MIRAFLORES">MIRAFLORES</option>
+                                    <option value="PACHACAMAC">PACHACAMAC</option>
+                                    <option value="PUCUSANA">PUCUSANA</option>
+                                    <option value="PUEBLO LIBRE">PUEBLO LIBRE</option>
+                                    <option value="PUENTE PIEDRA">PUENTE PIEDRA</option>
+                                    <option value="PUNTA HERMOSA">PUNTA HERMOSA</option>
+                                    <option value="PUNTA NEGRA">PUNTA NEGRA</option>
+                                    <option value="RIMAC">RIMAC</option>
+                                    <option value="SAN BARTOLO">SAN BARTOLO</option>
+                                    <option value="SAN BORJA">SAN BORJA</option>
+                                    <option value="SAN ISIDRO">SAN ISIDRO</option>
+                                    <option value="SAN JUAN DE LURIGANCHO">SAN JUAN DE LURIGANCHO</option>
+                                    <option value="SAN JUAN DE MIRAFLORES">SAN JUAN DE MIRAFLORES</option>
+                                    <option value="SAN LUIS">SAN LUIS</option>
+                                    <option value="SAN MARTIN DE PORRES">SAN MARTIN DE PORRES</option>
+                                    <option value="SAN MIGUEL">SAN MIGUEL</option>
+                                    <option value="SANTA ANITA">SANTA ANITA</option>
+                                    <option value="SANTA MARIA DEL MAR">SANTA MARIA DEL MAR</option>
+                                    <option value="SANTA ROSA">SANTA ROSA</option>
+                                    <option value="SANTIAGO DE SURCO">SANTIAGO DE SURCO</option>
+                                    <option value="SURQUILLO">SURQUILLO</option>
+                                    <option value="VILLA EL SALVADOR">VILLA EL SALVADOR</option>
+                                    <option value="VILLA MARIA DEL TRIUNFO">VILLA MARIA DEL TRIUNFO</option>
                                 </select>
                             </div>
                         </div>
@@ -151,7 +186,7 @@
                                 <input type="date" class="form-control" name="txtFecha" id="txtFecha">
                             </div>
                             <div class="d-flex flex-column">
-                                <label class="mb-2" for="precioCliente">¿Dónde estás ubicado?</label>
+                                <label class="mb-2" for="precioCliente">Precio propuesto</label>
                                 <div class="input-group">
                                     <span class="input-group-text">S/.</span>
                                     <input type="number" class="form-control" name="txtPrecio">

@@ -17,20 +17,19 @@ import javax.servlet.http.HttpServletRequest;
  * @author Usuario local
  */
 public class DAO_Cliente extends Conexion{
-    public boolean registrarSolicitud(HttpServletRequest request, int id, String titulo, String desc, String fecha, String reg,
-                 String prov, String dist, float precio) {
+    public boolean registrarSolicitud(int id, Solicitud s) {
         
         Connection conn = Connected(); 
         try{
             CallableStatement cs = conn.prepareCall("{CALL sp_Registrar_Solicitud(?,?,?,?,?,?,?,?)}");
             cs.setInt(1, id);
-            cs.setString(2, titulo);
-            cs.setString(3, desc);
-            cs.setString(4, fecha);
-            cs.setString(5, reg);
-            cs.setString(6, prov);
-            cs.setString(7, dist);
-            cs.setFloat(8, precio);
+            cs.setString(2, s.getTitulo());
+            cs.setString(3, s.getDescripcion());
+            cs.setString(4, s.getFechaNecesidad());
+            cs.setString(5, s.getRegion());
+            cs.setString(6, s.getProvincia());
+            cs.setString(7, s.getDistrito());
+            cs.setFloat(8, s.getPrecio());
             cs.execute();
             return true;
             /*ResultSet rs = cs.executeQuery();
@@ -59,7 +58,7 @@ public class DAO_Cliente extends Conexion{
         return false;
     }
     
-    public ArrayList<Solicitud> listarMisSolicitudes(HttpServletRequest request, int id) {
+    public ArrayList<Solicitud> listarMisSolicitudes(int id) {
         
         Connection conn = Connected(); 
         ArrayList<Solicitud> arrayList = new ArrayList<Solicitud>();
@@ -67,7 +66,7 @@ public class DAO_Cliente extends Conexion{
             CallableStatement cs = conn.prepareCall("{CALL sp_Listar_MisSolicitudes(?)}");
             cs.setInt(1, id);
             ResultSet rs = cs.executeQuery();            
-            if(rs.next()){
+            while(rs.next()){
                 Solicitud solicitud = new Solicitud(Integer.parseInt(rs.getString("IdSolicitud")),
                                                     rs.getString("Titulo"), 
                                                     rs.getString("Descripcion"), 

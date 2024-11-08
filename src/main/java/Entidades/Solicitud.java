@@ -30,6 +30,16 @@ public class Solicitud {
         precio = prec;
         estado = est;
     }
+    
+    public Solicitud(String tit, String desc, String fecha, String reg, String prov, String dist, float prec){
+        titulo = tit;
+        descripcion = desc;
+        fechaNecesidad = fecha;
+        region = reg;
+        provincia = prov;
+        distrito = dist;
+        precio = prec;
+    }
 
     public int getIdSolicitud() {
         return idSolicitud;

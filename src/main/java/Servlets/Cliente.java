@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,20 +33,11 @@ public class Cliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DAO_Cliente dAO_Cliente = new DAO_Cliente();
-        String Op =request.getParameter("Op");
-        int id = Integer.parseInt(request.getSession().getAttribute("id").toString()); 
-        try {
-            switch (Op) {
-                case "Listar":
-                    ArrayList<Solicitud> lista= new ArrayList<Solicitud>();
-                    lista = dAO_Cliente.listarMisSolicitudes(request, id);
-                    request.setAttribute("Lista", lista);
-                    request.getRequestDispatcher("/Cliente/MisSolicitudes.jsp").forward(request, response);
-                    //response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
-            }
+        int idSolicitud = Integer.parseInt(request.getParameter("txtId"));
+        try {            
+            request.setAttribute("codigo", idSolicitud);
+            request.getRequestDispatcher("/Cliente/Detalle.jsp").forward(request, response);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
     }
 
@@ -53,33 +45,42 @@ public class Cliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String titulo = request.getParameter("txtTitulo");
-        String descripcion = request.getParameter("txtDescripcion");
-        String region = request.getParameter("txtRegion");
-        String provincia = request.getParameter("txtProvincia");
-        String distrito = request.getParameter("txtDistrito");
-        String fecha = request.getParameter("txtFecha");
-        float precio = Float.parseFloat(request.getParameter("txtPrecio"));
+        Solicitud solicitud = new Solicitud(request.getParameter("txtTitulo"), 
+                                            request.getParameter("txtDescripcion"), 
+                                            request.getParameter("txtFecha"), 
+                                            request.getParameter("txtRegion"), 
+                                            request.getParameter("txtProvincia"), 
+                                            request.getParameter("txtDistrito"), 
+                                            Float.parseFloat(request.getParameter("txtPrecio")));
         int id = Integer.parseInt(request.getSession().getAttribute("id").toString()); 
         
         DAO_Cliente dAO_Cliente = new DAO_Cliente();
         try{
-          boolean access = dAO_Cliente.registrarSolicitud(request, id, titulo, descripcion, fecha, region, provincia, distrito, precio);
+            boolean access = dAO_Cliente.registrarSolicitud(id, solicitud);
           
-          if(access==true){
-            ArrayList<Solicitud> lista= new ArrayList<Solicitud>();
-            lista = dAO_Cliente.listarMisSolicitudes(request, id);
-            request.setAttribute("Lista", lista);
-            response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
-          }else{ 
-            request.setAttribute("mensajeError", "Los datos son incorrectos!");
-            request.getRequestDispatcher("").forward(request, response);
-          }
+            if(access==true){
+                HttpSession session = request.getSession(false);
+                session.setAttribute("Lista", listarMisSolicitudes(id));
+                response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
+            }else{ 
+                request.setAttribute("mensajeError", "Los datos son incorrectos!");
+                request.getRequestDispatcher("").forward(request, response);
+            }
         }catch(Exception ex) {
             ex.getMessage();
         }
     }
-
+    
+    
+    private ArrayList<Solicitud> listarMisSolicitudes(int id){
+        DAO_Cliente dAO_Cliente = new DAO_Cliente();
+        ArrayList<Solicitud> lista= new ArrayList<Solicitud>();
+        try {
+            lista = dAO_Cliente.listarMisSolicitudes(id);
+        } catch (Exception e) {
+        }
+        return lista;
+    }
     
     @Override
     public String getServletInfo() {

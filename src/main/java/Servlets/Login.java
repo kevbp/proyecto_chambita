@@ -25,15 +25,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -64,24 +55,24 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         
         DAO_Acceso usuarioData = new DAO_Acceso();
+        ArrayList<Solicitud> lista = new ArrayList<Solicitud>();
         
         String user = request.getParameter("txtEmail");
         String Pass = request.getParameter("txtClave");
         
         try{            
-            boolean access=usuarioData.autenticarUsuario(request, user, Pass);
+            boolean access = usuarioData.autenticarUsuario(request, user, Pass);
             int id = Integer.parseInt(request.getSession().getAttribute("id").toString()); 
 
             if(access==true){
                 HttpSession session = request.getSession(false);
                 DAO_Cliente dAO_Cliente = new DAO_Cliente();
-                ArrayList<Solicitud> lista= new ArrayList<Solicitud>();
-                lista = dAO_Cliente.listarMisSolicitudes(request, id);
+                lista = dAO_Cliente.listarMisSolicitudes(id);
                 session.setAttribute("Lista", lista);
                 response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); //Redirige al index por mientras
             }else{ 
                 request.setAttribute("mensajeError", "Los datos son incorrectos!");
-                request.getRequestDispatcher("").forward(request, response);
+                request.getRequestDispatcher("/Acceso/Login.jsp").forward(request, response);
             }
         }catch(Exception ex) {
             ex.getMessage();

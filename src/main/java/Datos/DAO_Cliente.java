@@ -85,4 +85,30 @@ public class DAO_Cliente extends Conexion{
         }
         return arrayList;
     }
+    
+    public Solicitud mostrarDetalleSolicitud(int id) {        
+        Connection conn = Connected(); 
+        Solicitud solicitud = null;
+        try{
+            CallableStatement cs = conn.prepareCall("{CALL sp_Detalle_Solicitud(?)}");
+            cs.setInt(1, id);
+            ResultSet rs = cs.executeQuery();            
+            if(rs.next()){
+                solicitud = new Solicitud(Integer.parseInt(rs.getString("IdSolicitud")),
+                                                    rs.getString("Titulo"), 
+                                                    rs.getString("Descripcion"), 
+                                                    rs.getString("FechaNecesidad"), 
+                                                    rs.getString("Region"), 
+                                                    rs.getString("Provincia"), 
+                                                    rs.getString("Distrito"), 
+                                                    Float.parseFloat(rs.getString("Precio")),
+                                                    rs.getString("Estado"));
+            }
+        }catch(SQLException ex){
+            ex.getMessage();
+        }finally{
+            Discconet();
+        }
+        return solicitud;
+    }
 }

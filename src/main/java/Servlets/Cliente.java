@@ -33,9 +33,10 @@ public class Cliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idSolicitud = Integer.parseInt(request.getParameter("txtId"));
+        int id = Integer.parseInt(request.getParameter("txtId")); 
+        DAO_Cliente dAO_Cliente = new DAO_Cliente();
         try {            
-            request.setAttribute("codigo", idSolicitud);
+            request.setAttribute("Solicitud", dAO_Cliente.mostrarDetalleSolicitud(id));
             request.getRequestDispatcher("/Cliente/Detalle.jsp").forward(request, response);
         } catch (Exception e) {
         }

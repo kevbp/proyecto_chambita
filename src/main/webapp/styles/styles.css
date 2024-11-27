@@ -100,3 +100,37 @@ body {
 .offcanvas{
     width: 300px !important;
 }
+.sidebar {
+    background-color: #7C7C7C;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+}
+.sidebar label {
+    font-weight: normal;
+}
+.sidebar button {
+    background-color: #3A4BB7;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    width: 100%;
+}
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: -1px 6px 10px rgba(0, 0, 0, 0.1);
+  }
+  .card .status {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .status.green { color: green; }
+  .status.yellow { color: orange; }
+  .status.blue { color: blue; }

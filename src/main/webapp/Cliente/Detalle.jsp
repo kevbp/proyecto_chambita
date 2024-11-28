@@ -12,7 +12,7 @@
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Detalle de solicitud</title>
     </head>
     <body>
         <h1>Detalle de Solicitud</h1>

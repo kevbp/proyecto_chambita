@@ -9,7 +9,7 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <%
         List<Solicitud> Lista = (List<Solicitud>) session.getAttribute("Lista");
     %>
@@ -106,58 +106,41 @@
 
           <div class="col-md-9">
             <!-- Dynamic Cards -->
+            <form action="../Cliente" method="GET">
             <c:forEach var="campo" items="${Lista}">
-                <div class="card">
-                <div data-name="${campo.idSolicitud} class="card">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h5>${campo.titulo}</h5>
-                    <small class="text-muted">${campo.idSolicitud}</small>
-                    <p class="mt-2">${campo.descripcion}</p>
-                    <div class="status green"><span>●</span>${campo.estado}</div>
-                  </div>
-                  <div class="text-end">
-                    <p class="fw-bold">S/. ${campo.precio}</p>
-                    <input type="submit" value="Ver detalles" name="btn btn-link text-primary btnConsultar" onclick="handleButtonClick(this)"/>
-                  </div>
+                <div class="card p-4">
+                    <div data-name="${campo.idSolicitud}">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h5>${campo.titulo}</h5>
+                        <small class="text-muted">${campo.idSolicitud}</small>
+                        <p class="mt-2">${campo.descripcion}</p>
+                        <div class="status green"><span>●</span>${campo.estado}</div>
+                      </div>
+                      <div class="text-end">
+                        <p class="fw-bold">S/. ${campo.precio}</p>
+                        <input type="submit" value="Ver detalles" name="btnConsultar" class="btn btn-link text-primary" onclick="handleButtonClick(this)"/>
+                      </div>
+                    </div>
+                    </div>
                 </div>
-              </div>
-              </div>
              </c:forEach>
+             <input type="text" id="txtId" name="txtId" hidden>            
+            </form>
+            
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <h1>Mis Solicitudes</h1>
+        
+      <h1>Mis Solicitudes</h1>
         <a href="Solicitud.jsp">Nueva solicitud</a>
-        <form action="../Cliente" method="GET">
-            <table border="1">
-                <thead>
-                    <td>Id Solicitud</td>
-                    <td>Titulo</td>
-                    <td>Fecha Necesidad</td>
-                    <td>Precio</td>
-                    <td>Estado</td>
-                </thead>                
-                <tbody>
-                <c:forEach var="campo" items="${Lista}">
-                <tr data-name="${campo.idSolicitud}">
-                    <td>${campo.idSolicitud}</td>
-                    <td>${campo.titulo}</td>
-                    <td>${campo.fechaNecesidad}</td>
-                    <td>${campo.precio}</td>
-                    <td><input type="submit" value="Consultar" name="btnConsultar" onclick="handleButtonClick(this)"/></td>
-                </tr>
-                </c:forEach>  
-                </tbody>              
-            </table> 
-            <input type="text" id="txtId" name="txtId" hidden>            
-        </form>
         <form action="../CerrarSesion" method="POST">
             <input type="submit" value="Cerrar Sesion">
         </form>
+        
     </body>
     <script>
         function handleButtonClick(button) {
             // Accessing row data using the data-* attributes
-            const name = button.parentNode.parentNode.dataset.name;
+            const name = button.parentNode.parentNode.parentNode.dataset.name;
             document.getElementById("txtId").value = name;
         }
     </script>

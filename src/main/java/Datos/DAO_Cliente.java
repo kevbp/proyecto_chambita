@@ -67,7 +67,7 @@ public class DAO_Cliente extends Conexion{
             cs.setInt(1, id);
             ResultSet rs = cs.executeQuery();            
             while(rs.next()){
-                Solicitud solicitud = new Solicitud(Integer.parseInt(rs.getString("IdSolicitud")),
+            Solicitud solicitud = new Solicitud(Integer.parseInt(rs.getString("IdSolicitud")),
                                                     rs.getString("Titulo"), 
                                                     rs.getString("Descripcion"), 
                                                     rs.getString("FechaNecesidad"), 
@@ -97,7 +97,8 @@ public class DAO_Cliente extends Conexion{
                 solicitud = new Solicitud(Integer.parseInt(rs.getString("IdSolicitud")),
                                                     rs.getString("Titulo"), 
                                                     rs.getString("Descripcion"), 
-                                                    rs.getString("FechaNecesidad"), 
+                                                    rs.getString("FechaNecesidad"),
+                                                    rs.getString("FechaPublicacion"),
                                                     rs.getString("Region"), 
                                                     rs.getString("Provincia"), 
                                                     rs.getString("Distrito"), 

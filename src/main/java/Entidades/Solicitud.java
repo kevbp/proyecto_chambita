@@ -13,6 +13,7 @@ public class Solicitud {
     private String titulo;
     private String descripcion;
     private String fechaNecesidad;
+    private String fechaSolicitud;
     private String region;
     private String provincia;
     private String distrito;
@@ -41,6 +42,27 @@ public class Solicitud {
         precio = prec;
     }
 
+    public Solicitud(int idSolicitud, String titulo, String descripcion, String fechaNecesidad, String fechaSolicitud, String region, String provincia, String distrito, float precio, String estado) {
+        this.idSolicitud = idSolicitud;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.fechaNecesidad = fechaNecesidad;
+        this.fechaSolicitud = fechaSolicitud;
+        this.region = region;
+        this.provincia = provincia;
+        this.distrito = distrito;
+        this.precio = precio;
+        this.estado = estado;
+    }
+
+    public String getFechaSolicitud() {
+        return fechaSolicitud;
+    }
+
+    public void setFechaSolicitud(String fechaSolicitud) {
+        this.fechaSolicitud = fechaSolicitud;
+    }
+    
     public int getIdSolicitud() {
         return idSolicitud;
     }

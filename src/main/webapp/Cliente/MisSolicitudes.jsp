@@ -27,7 +27,7 @@
     %>
     <nav class="navbar navbar-expand-lg navbar-white bg-white p-3 header-nav" aria-label="Offcanvas navbar large">
         <div class="container-fluid px-3">
-            <a href="index.html" class="text-decoration-none color-logo  pe-5">
+            <a href="../index.jsp" class="text-decoration-none color-logo  pe-5">
                 <h1 class="text-start color-logo fs-2">Chambita<span class="color-links">.pe</span></h1>
             </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -61,7 +61,19 @@
                     <a class="nav-link px-3" href="#">Mis solicitudes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link px-3 btn btn-primary" href="#">Mi perfil</a>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-primary nav-link px-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          Mi perfil
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end text-center">
+                          <li><a class="dropdown-item" href="#">Mis información</a></li>
+                          <li>
+                              <form action="../CerrarSesion" method="POST">
+                                <input type="submit" value="Cerrar Sesion">
+                              </form>
+                          </li>
+                        </ul>
+                      </div>
                     </li>
                 </ul>
             </div>
@@ -72,10 +84,8 @@
     <body>
         <div class="container mt-4">
         <div class="row">
-            <h4>Solicitudes</h4>
-        </div>
-        <div class="row">
           <div class="col-md-3">
+            <h4 class="pb-2">Mis solicitudes</h4>
             <div class="sidebar">
               <h5>Filtrar</h5>
               <form>
@@ -105,7 +115,9 @@
           </div>
 
           <div class="col-md-9">
-            <!-- Dynamic Cards -->
+              <div class="d-flex justify-content-end">
+                  <a href="Solicitud.jsp"class="btn btn-primary mb-2" >Nueva solicitud</a>
+              </div>
             <form action="../Cliente" method="GET">
             <c:forEach var="campo" items="${Lista}">
                 <div class="card p-4">
@@ -135,7 +147,6 @@
         <form action="../CerrarSesion" method="POST">
             <input type="submit" value="Cerrar Sesion">
         </form>
-        
     </body>
     <script>
         function handleButtonClick(button) {

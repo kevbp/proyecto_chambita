@@ -14,6 +14,11 @@
         <link rel="stylesheet" href="..\styles\styles.css">
         <title>Chambita.pe</title>
     </head>
+    <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
+            if (session.getAttribute("id")!=null){
+                response.sendRedirect(request.getContextPath()+"/Cliente/MisSolicitudes.jsp");
+            }
+    %>
     <body>
         <div class="container">
             <header class="d-flex justify-content-end py-3">

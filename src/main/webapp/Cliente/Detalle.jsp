@@ -7,6 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
+    <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
+                if (session.getAttribute("id")==null){
+                    response.sendRedirect(request.getContextPath()+"/Acceso/Login.jsp");
+                }
+    %>
     <%
         Solicitud sol = (Solicitud) request.getAttribute("Solicitud");
     %>
@@ -16,7 +21,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="styles/styles.css">
         <title>Detalle de solicitud</title>
-</head>
+    </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-white bg-white p-3 header-nav" aria-label="Offcanvas navbar large">
         <div class="container-fluid px-3">

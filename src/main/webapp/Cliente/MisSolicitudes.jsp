@@ -10,6 +10,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
+    <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
+            if (session.getAttribute("id")==null){
+                response.sendRedirect(request.getContextPath()+"/Acceso/Login.jsp");
+            }
+    %>
     <%
         List<Solicitud> Lista = (List<Solicitud>) session.getAttribute("Lista");
     %>
@@ -20,11 +25,6 @@
         <link rel="stylesheet" href="../styles/styles.css">
         <title>Mis Solicitudes</title>
     </head>
-    <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
-            if (session.getAttribute("id")==null){
-                response.sendRedirect(request.getContextPath()+"/Acceso/Login.jsp");
-            }
-    %>
     <nav class="navbar navbar-expand-lg navbar-white bg-white p-3 header-nav" aria-label="Offcanvas navbar large">
         <div class="container-fluid px-3">
             <a href="../index.jsp" class="text-decoration-none color-logo  pe-5">
@@ -66,7 +66,7 @@
                           Mi perfil
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end text-center">
-                          <li><a class="dropdown-item" href="#">Mis información</a></li>
+                          <li><a class="dropdown-item" href="#">Gestionar cuenta</a></li>
                           <li>
                               <form action="../CerrarSesion" method="POST">
                                 <input type="submit" value="Cerrar Sesion">
@@ -141,12 +141,6 @@
             </form>
             
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        
-      <h1>Mis Solicitudes</h1>
-        <a href="Solicitud.jsp">Nueva solicitud</a>
-        <form action="../CerrarSesion" method="POST">
-            <input type="submit" value="Cerrar Sesion">
-        </form>
     </body>
     <script>
         function handleButtonClick(button) {

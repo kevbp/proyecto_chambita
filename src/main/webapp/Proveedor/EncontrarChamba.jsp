@@ -49,12 +49,13 @@
                                 <a class="nav-link px-3" href="#">Atenciones</a>
                             </li>
                             <li class="nav-item">
+                                
                             <div class="btn-group">
                               <button type="button" class="btn btn-primary nav-link px-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Mi perfil
                               </button>
                               <ul class="dropdown-menu dropdown-menu-end text-center">
-                                  <li><a class="dropdown-item" href="../Cliente.jsp">Cambiar a cliente</a></li>
+                                  <li><a class="dropdown-item" href="../Cliente/MisSolicitudes.jsp">Cambiar a cliente</a></li>
                                 <li>
                                     <form action="../CerrarSesion" method="POST">
                                         <input class="btn btn-secondary" type="submit" value="Cerrar Sesion">
@@ -62,6 +63,7 @@
                                 </li>
                               </ul>
                             </div>
+                                
                           </li>
                         </ul>
                     </div>

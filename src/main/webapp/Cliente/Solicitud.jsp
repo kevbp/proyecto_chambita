@@ -22,7 +22,7 @@
     <body>
     <nav class="navbar navbar-expand-lg navbar-white bg-white p-3 header-nav" aria-label="Offcanvas navbar large">
         <div class="container-fluid px-3">
-            <a href="index.html" class="text-decoration-none color-logo  pe-5">
+            <a href="../index.jsp" class="text-decoration-none color-logo  pe-5">
                 <h1 class="text-start color-logo fs-2">Chambita<span class="color-links">.pe</span></h1>
             </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -34,29 +34,27 @@
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-center d-flex align-items-center flex-row flex-grow-1">
-                        <div class="px-2 fw-bold">
-                            Cliente
-                        </div>
-                        <a href="index.html">
-                            <div class="switch">
-                                <input type="checkbox" id="btn-switch">
-                                <label for="btn-switch" class="lbl-switch"></label>    
-                            </div>
-                        </a>
-                        <div class="px-2">
-                            Especialista
-                        </div>
-                </ul>
                 <ul class="navbar-nav justify-content-end flex-grow-1">
-                    <li class="nav-item border-bottom border-dark-subtle">
-                    <a class="nav-link active px-3 fw-semibold" aria-current="page" href="#">Contratar</a>
+                    <li class="nav-item">
+                        <a class="nav-link active mx-1 my-1 fw-semibold" aria-current="page" href="Solicitud.jsp">Contratar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link px-3" href="MisSolicitudes.jsp">Mis solicitudes</a>
+                        <a class="nav-link mx-1 my-1" href="MisSolicitudes.jsp">Mis solicitudes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link px-3 btn btn-primary" href="#">Mi perfil</a>
+                      <div class="btn-group mx-1 my-1 btn-primary   ">
+                        <button type="button" class="btn btn-primary nav-link px-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          Mi perfil
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end text-center">
+                            <li><a class="dropdown-item" href="../Proveedor/EncontrarChamba.jsp">Cambiar a proveedor</a></li>
+                          <li>
+                              <form action="../CerrarSesion" method="POST">
+                                  <input class="btn btn-secondary" type="submit" value="Cerrar Sesion">
+                              </form>
+                          </li>
+                        </ul>
+                      </div>
                     </li>
                 </ul>
             </div>
@@ -64,6 +62,7 @@
         </div>
       </nav>
       <main>
+          <div class="container">
             <section class="row">
                 <div class="col-md-4 px-5 py-3 m-2">
                     <div class="fs-2 fw-semibold">
@@ -199,7 +198,8 @@
                     </form>
                 </div>
             </section>
-      </main>
+      </div>
+      </main>  
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

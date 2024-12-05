@@ -39,29 +39,15 @@
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-center d-flex align-items-center flex-row flex-grow-1">
-                        <div class="px-2 fw-bold">
-                            Cliente
-                        </div>
-                        <a href="index.html">
-                            <div class="switch">
-                                <input type="checkbox" id="btn-switch">
-                                <label for="btn-switch" class="lbl-switch"></label>    
-                            </div>
-                        </a>
-                        <div class="px-2">
-                            Especialista
-                        </div>
-                </ul>
                 <ul class="navbar-nav justify-content-end flex-grow-1">
-                    <li class="nav-item border-bottom border-dark-subtle">
-                    <a class="nav-link active px-3 fw-semibold" aria-current="page" href="#">Contratar</a>
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 my-1" aria-current="page" href="Solicitud.jsp">Contratar</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link px-3" href="#">Mis solicitudes</a>
+                        <a class="nav-link active mx-1 my-1 fw-semibold" href="MisSolicitudes.jsp">Mis solicitudes</a>
                     </li>
                     <li class="nav-item">
-                      <div class="btn-group">
+                      <div class="btn-group mx-1 my-1 btn-primary   ">
                         <button type="button" class="btn btn-primary nav-link px-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                           Mi perfil
                         </button>

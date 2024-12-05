@@ -15,25 +15,19 @@
         <title>Encontrar Chamba</title>
     </head>
     <body>
-
-        <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-white bg-white p-3 header-nav" aria-label="Offcanvas navbar large">
             <div class="container-fluid px-3">
-
                 <a href="index.html" class="text-decoration-none color-logo pe-5">
                     <h1 class="text-start color-logo fs-2">Chambita<span class="color-links">.pe</span></h1>
                 </a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="offcanvas offcanvas-end text-bg-white" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Navegación</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-center d-flex align-items-center flex-row flex-grow-1">
                             <div class="px-2 fw-bold">
@@ -47,7 +41,6 @@
                                 Especialista
                             </div>
                         </ul>
-
                         <ul class="navbar-nav justify-content-end flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link px-3 border-bottom border-dark-subtle fw-semibold" href="#">Encontrar chamba</a>
@@ -56,8 +49,20 @@
                                 <a class="nav-link px-3" href="#">Atenciones</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-3 btn btn-primary" href="#">Mi perfil</a>
-                            </li>
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-primary nav-link px-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Mi perfil
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end text-center">
+                                  <li><a class="dropdown-item" href="../Cliente.jsp">Cambiar a cliente</a></li>
+                                <li>
+                                    <form action="../CerrarSesion" method="POST">
+                                        <input class="btn btn-secondary" type="submit" value="Cerrar Sesion">
+                                    </form>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
                         </ul>
                     </div>
                 </div>

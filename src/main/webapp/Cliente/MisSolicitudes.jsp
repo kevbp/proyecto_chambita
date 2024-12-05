@@ -66,10 +66,10 @@
                           Mi perfil
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end text-center">
-                          <li><a class="dropdown-item" href="#">Gestionar cuenta</a></li>
+                            <li><a class="dropdown-item" href="../Proveedor/EncontrarChamba.jsp">Cambiar a proveedor</a></li>
                           <li>
                               <form action="../CerrarSesion" method="POST">
-                                <input type="submit" value="Cerrar Sesion">
+                                  <input class="btn btn-secondary" type="submit" value="Cerrar Sesion">
                               </form>
                           </li>
                         </ul>

@@ -65,7 +65,7 @@ public class Registrar extends HttpServlet {
             boolean access=usuarioData.registrarUsuario(request, nomb, ape, correo, clave);
 
             if(access==true){
-              response.sendRedirect(request.getContextPath()); //Redirige al index por mientras
+              response.sendRedirect(request.getContextPath()+"/Acceso/Login.jsp"); //Redirige al index por mientras
             }else{ 
               request.setAttribute("mensajeError", "Los datos son incorrectos!");
               request.getRequestDispatcher("").forward(request, response);

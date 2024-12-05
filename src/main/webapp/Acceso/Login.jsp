@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" name="txtClave" id="txtClave" placeholder="Contraseña" maxlength="10" required>
+                        <input type="password" class="form-control" name="txtClave" id="txtClave" placeholder="Contraseña" maxlength="30" required>
                         <label for="txtClave">Contraseña</label>
                     </div>
 

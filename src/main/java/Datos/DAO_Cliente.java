@@ -110,6 +110,7 @@ public class DAO_Cliente extends Conexion{
         }finally{
             Discconet();
         }
+        System.out.println(solicitud);
         return solicitud;
     }
 }

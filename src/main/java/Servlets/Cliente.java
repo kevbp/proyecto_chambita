@@ -35,7 +35,8 @@ public class Cliente extends HttpServlet {
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("txtId")); 
         DAO_Cliente dAO_Cliente = new DAO_Cliente();
-        try {            
+        try {
+            System.out.println("ID de solicitud recibido: " + id);            
             request.setAttribute("Solicitud", dAO_Cliente.mostrarDetalleSolicitud(id));
             request.getRequestDispatcher("/Cliente/Detalle.jsp").forward(request, response);
         } catch (Exception e) {

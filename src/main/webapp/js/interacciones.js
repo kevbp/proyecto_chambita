@@ -6,6 +6,7 @@ $(document).ready(function () {
         "Mudanzas y transporte": ["Mudanzas", "Transporte de muebles", "Ensamblaje de muebles"],
         "Otros servicios": ["Otros servicios"]
     };
+    
     const allServicesFlat = Object.values(servicesByCategory).flat();
     const maxSuggestions = 5;
 

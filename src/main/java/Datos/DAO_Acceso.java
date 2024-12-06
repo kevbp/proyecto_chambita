@@ -4,6 +4,7 @@
  */
 package Datos;
 
+import Entidades.*;
 import Utilitarios.Encriptacion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -29,18 +30,20 @@ public class DAO_Acceso extends Conexion{
             
             if(rs.next()){
                 
-                String id = rs.getString("IdUsuario");
-                String nombre = rs.getString("Correo");
-                String clave = rs.getString("Clave");
+                Usuario usuario = new Usuario(Integer.parseInt(rs.getString("IdUsuario")), 
+                                        rs.getString("Nombres"), 
+                                        rs.getString("Apellidos"), 
+                                        Integer.parseInt(rs.getString("Perfil")),
+                                        rs.getString("Correo"),
+                                        rs.getString("Clave"));
                 
-                if (e.decript(clave).equals(pass)) {                
-                    if(!id.equals("")){                    
-                        //Usuario nuser = new Usuario(user, nivelUsuario, nombreUsuario);              
+                if (e.decript(usuario.getClave()).equals(pass)) {                
+                    if(!String.valueOf(usuario.getIdUsuario()).equals("")){                   
                         HttpSession session = request.getSession();
                         session.invalidate();
                         session = request.getSession(true);
-                        session.setAttribute("id", id);
-                        session.setAttribute("perfil", 2);
+                        session.setAttribute("id", usuario.getIdUsuario());
+                        session.setAttribute("perfil", usuario.getPerfil());
                         //session.setMaxInactiveInterval(120);
                         return true;
                     }

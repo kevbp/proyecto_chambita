@@ -8,6 +8,37 @@ package Entidades;
  *
  * @author Usuario local
  */
-public class Usuario {
+public class Usuario extends Login{
     
+    private int idUsuario;
+    private String nombre;
+    private String apellido;
+    private int perfil;
+
+    public Usuario(int idUsuario, String nombre, String apellido, int perfil, String correo, String clave) {
+        super(correo, clave);
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.perfil = perfil;
+    }
+    
+    public Usuario(){     
+    }
+    
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }    
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public int getPerfil() {
+        return perfil;
+    }
 }

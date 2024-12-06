@@ -68,14 +68,14 @@ public class DAO_Cliente extends Conexion{
             ResultSet rs = cs.executeQuery();            
             while(rs.next()){
             Solicitud solicitud = new Solicitud(Integer.parseInt(rs.getString("IdSolicitud")),
-                                                    rs.getString("Titulo"), 
-                                                    rs.getString("Descripcion"), 
-                                                    rs.getString("FechaNecesidad"), 
-                                                    rs.getString("Region"), 
-                                                    rs.getString("Provincia"), 
-                                                    rs.getString("Distrito"), 
-                                                    Float.parseFloat(rs.getString("Precio")),
-                                                    rs.getString("Estado"));
+                                                rs.getString("Titulo"), 
+                                                rs.getString("Descripcion"), 
+                                                rs.getString("FechaNecesidad"), 
+                                                rs.getString("Region"), 
+                                                rs.getString("Provincia"), 
+                                                rs.getString("Distrito"), 
+                                                Float.parseFloat(rs.getString("Precio")),
+                                                rs.getString("Estado"));
                 arrayList.add(solicitud);
             }
         }catch(SQLException ex){

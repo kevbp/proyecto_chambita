@@ -38,8 +38,7 @@ public class DAO_Acceso extends Conexion{
                                         rs.getString("Clave"));
                 
                 if (e.decript(usuario.getClave()).equals(pass)) {                
-                    if(!String.valueOf(usuario.getIdUsuario()).equals("")){                    
-                        //Usuario nuser = new Usuario(user, nivelUsuario, nombreUsuario);              
+                    if(!String.valueOf(usuario.getIdUsuario()).equals("")){                   
                         HttpSession session = request.getSession();
                         session.invalidate();
                         session = request.getSession(true);

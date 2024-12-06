@@ -1,18 +1,24 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : Solicitudes
     Created on : 17 oct. 2024, 22:04:41
     Author     : Usuario local
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="Entidades.Solicitud"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
-            if (session.getAttribute("id")==null){
-                response.sendRedirect(request.getContextPath()+"/Acceso/Login.jsp");
-            } else if (Integer.parseInt(session.getAttribute("perfil").toString())==1){
-                response.sendRedirect(request.getContextPath()+"/Acceso/Verificar.jsp");
-            }
+        if (session.getAttribute("id")==null){
+            response.sendRedirect(request.getContextPath()+"/Acceso/Login.jsp");
+        } else if (Integer.parseInt(session.getAttribute("perfil").toString())==1){
+            response.sendRedirect(request.getContextPath()+"/Acceso/Verificar.jsp");
+        }
+    %>
+    <%
+        List<Solicitud> Lista = (List<Solicitud>) session.getAttribute("Lista");
     %>
     <head>
         <meta charset="UTF-8">

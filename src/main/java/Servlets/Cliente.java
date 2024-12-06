@@ -4,7 +4,7 @@
  */
 package Servlets;
 
-import Datos.DAO_Cliente;
+import Datos.*;
 import Entidades.Solicitud;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,28 +45,41 @@ public class Cliente extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {        
         
-        Solicitud solicitud = new Solicitud(request.getParameter("txtTitulo"), 
+        int id = Integer.parseInt(request.getSession().getAttribute("id").toString()); 
+        String opc = request.getSession().getAttribute("perfil").toString();//request.getParameter("perfil");
+        DAO_Cliente dAO_Cliente = new DAO_Cliente();
+        ArrayList<Solicitud> lista = new ArrayList<Solicitud>();    
+        
+        try{
+            if (opc.equalsIgnoreCase("2")){
+                DAO_Proveedor dAO_Proveedor = new DAO_Proveedor();
+                HttpSession session = request.getSession(false);
+                lista = dAO_Proveedor.listarSolicitudes(id);
+                session.setAttribute("Lista", lista);
+                response.sendRedirect(request.getContextPath() + "/Proveedor/EncontrarChamba.jsp"); 
+            }else if (opc.equalsIgnoreCase("1")){
+                response.sendRedirect(request.getContextPath() + "/Proveedor/EncontrarChamba.jsp"); 
+            }else{
+                Solicitud solicitud = new Solicitud(request.getParameter("txtTitulo"), 
                                             request.getParameter("txtDescripcion"), 
                                             request.getParameter("txtFecha"), 
                                             request.getParameter("txtRegion"), 
                                             request.getParameter("txtProvincia"), 
                                             request.getParameter("txtDistrito"), 
                                             Float.parseFloat(request.getParameter("txtPrecio")));
-        int id = Integer.parseInt(request.getSession().getAttribute("id").toString()); 
-        
-        DAO_Cliente dAO_Cliente = new DAO_Cliente();
-        try{
-            boolean access = dAO_Cliente.registrarSolicitud(id, solicitud);
-          
-            if(access==true){
-                HttpSession session = request.getSession(false);
-                session.setAttribute("Lista", listarMisSolicitudes(id));
-                response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
-            }else{ 
-                request.setAttribute("mensajeError", "Los datos son incorrectos!");
-                request.getRequestDispatcher("").forward(request, response);
+                
+                boolean access = dAO_Cliente.registrarSolicitud(id, solicitud);
+
+                if(access==true){
+                    HttpSession session = request.getSession(false);
+                    session.setAttribute("Lista", listarMisSolicitudes(id));
+                    response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp"); 
+                }else{ 
+                    request.setAttribute("mensajeError", "Los datos son incorrectos!");
+                    request.getRequestDispatcher("").forward(request, response);
+                }
             }
         }catch(Exception ex) {
             ex.getMessage();

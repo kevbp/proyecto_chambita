@@ -47,15 +47,20 @@
                             <a class="nav-link active mx-1 my-1 fw-semibold" href="MisSolicitudes.jsp">Mis solicitudes</a>
                         </li>
                         <li class="nav-item">
-                            <div class="btn-group mx-1 my-1 btn-primary   ">
+                            <div class="btn-group mx-1 my-1 btn-primary">
                                 <button type="button" class="btn btn-primary nav-link px-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     Mi perfil
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end text-center">
-                                    <li><a class="dropdown-item" href="../Proveedor/EncontrarChamba.jsp">Cambiar a proveedor</a></li>
+                                    <li>                                        
+                                        <form name="submitForm" action="../Cliente" method="POST">
+                                        <input type="hidden" name="perfil" value="<%= session.getAttribute("perfil").toString()%>">
+                                        <a class="dropdown-item" href="javascript:document.submitForm.submit()">Cambiar a proveedor</a>
+                                        </form>
+                                    </li>
                                     <li>
-                                        <form action="../CerrarSesion" method="POST">
-                                            <input class="btn btn-secondary" type="submit" value="Cerrar Sesion">
+                                        <form name="cerrar" action="../CerrarSesion" method="POST">
+                                        <a class="dropdown-item" href="javascript:document.cerrar.submit()">Cerrar Sesion</a>
                                         </form>
                                     </li>
                                 </ul>

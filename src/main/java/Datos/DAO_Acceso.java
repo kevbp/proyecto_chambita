@@ -40,7 +40,7 @@ public class DAO_Acceso extends Conexion{
                         session.invalidate();
                         session = request.getSession(true);
                         session.setAttribute("id", id);
-                        session.setAttribute("perfil", 1);
+                        session.setAttribute("perfil", 2);
                         //session.setMaxInactiveInterval(120);
                         return true;
                     }

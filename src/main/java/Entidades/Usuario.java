@@ -14,8 +14,17 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private int perfil;
-    private String correo;
 
+    public Usuario(int idUsuario, String nombre, String apellido, int perfil) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.perfil = perfil;
+    }
+    
+    public Usuario(){     
+    }
+    
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -30,9 +39,5 @@ public class Usuario {
 
     public int getPerfil() {
         return perfil;
-    }
-
-    public String getCorreo() {
-        return correo;
     }
 }

@@ -59,7 +59,7 @@ public class Cliente extends HttpServlet {
                 lista = dAO_Proveedor.listarSolicitudes(id);
                 session.setAttribute("Lista", lista);
                 response.sendRedirect(request.getContextPath() + "/Proveedor/EncontrarChamba.jsp"); 
-            }else if (opc.equalsIgnoreCase("1")){
+            }else if (opc.equalsIgnoreCase("1") && request.getParameter("txtTitulo") == null){
                 response.sendRedirect(request.getContextPath() + "/Proveedor/EncontrarChamba.jsp"); 
             }else{
                 Solicitud solicitud = new Solicitud(request.getParameter("txtTitulo"), 

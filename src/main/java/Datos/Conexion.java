@@ -16,7 +16,8 @@ abstract class Conexion {
     static String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
     static String url="jdbc:sqlserver://localhost:1433;databaseName=APPBD;encrypt=false;";
     static String user="sa";
-    static String pass="Ch@mb@.com";
+    //static String pass="Ch@mb@.com";
+    static String pass="Sql2019";
     Connection conn=null;
 
     public Conexion() {

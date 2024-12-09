@@ -55,10 +55,14 @@
                                     Mi perfil
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end text-center">
-                                    <li><a class="dropdown-item" href="../Cliente/MisSolicitudes.jsp">Cambiar a cliente</a></li>
+                                    <li>                                        
+                                        <form name="submitForm" action="../Proveedor" method="POST">
+                                        <a class="dropdown-item" href="javascript:document.submitForm.submit()">Cambiar a cliente</a>
+                                        </form>
+                                    </li>
                                     <li>
-                                        <form action="../CerrarSesion" method="POST">
-                                            <input class="btn btn-secondary" type="submit" value="Cerrar Sesion">
+                                        <form name="cerrar" action="../CerrarSesion" method="POST">
+                                        <a class="dropdown-item" href="javascript:document.cerrar.submit()">Cerrar Sesion</a>
                                         </form>
                                     </li>
                                 </ul>

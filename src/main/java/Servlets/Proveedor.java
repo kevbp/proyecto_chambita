@@ -4,13 +4,17 @@
  */
 package Servlets;
 
+import Datos.*;
+import Entidades.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -54,7 +58,17 @@ public class Proveedor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        try {
+            int id = Integer.parseInt(request.getSession().getAttribute("id").toString()); 
+            DAO_Cliente dAO_Cliente = new DAO_Cliente();
+            ArrayList<Solicitud> lista = new ArrayList<Solicitud>();
+            HttpSession session = request.getSession(false);
+            lista = dAO_Cliente.listarMisSolicitudes(id);
+            session.setAttribute("Lista", lista);
+            response.sendRedirect(request.getContextPath() + "/Cliente/MisSolicitudes.jsp");
+        } catch (Exception e) {
+        }
     }
 
     @Override
